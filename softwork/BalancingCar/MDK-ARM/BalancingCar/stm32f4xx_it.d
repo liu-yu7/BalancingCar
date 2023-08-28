@@ -34,3 +34,10 @@ balancingcar\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_t
 balancingcar\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 balancingcar\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 balancingcar\stm32f4xx_it.o: ../Inc/stm32f4xx_it.h
+balancingcar\stm32f4xx_it.o: ..\BlueTooth\BlueTooth.h
+balancingcar\stm32f4xx_it.o: ../Inc/usart.h
+balancingcar\stm32f4xx_it.o: D:\Keil5\Keil5\ARM\ARMCC\Bin\..\include\string.h
+balancingcar\stm32f4xx_it.o: ..\MPU6500_driver\mpu6500_driver.h
+balancingcar\stm32f4xx_it.o: ..\Can-Receive\CAN_receive.h
+balancingcar\stm32f4xx_it.o: ..\Can-Receive\struct_typedef.h
+balancingcar\stm32f4xx_it.o: ..\pid\pid.h

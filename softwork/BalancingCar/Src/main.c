@@ -29,7 +29,11 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "bsp_can.h"
+#include "mpu6500_driver.h"
+#include "CAN_receive.h"
+#include "pid.h"
+#include "BlueTooth.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -98,7 +102,17 @@ int main(void)
   MX_TIM8_Init();
   MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_TIM_Base_Start_IT(&htim6);
+  BlueTooth_init();
+  can_filter_init();
+  mpu_device_init();    //初始化mpu6500
+  init_quaternion();    //初始化四元数
+  extern pid_t Pid_bal, Pid_spe;
+  extern t_receive receive_measure;      //储存接收数据
+  pid_param_init(&Pid_bal, POSITION_PID, 6000, 2000, 5, 0.1, 0.1);
+  pid_param_init(&Pid_spe, POSITION_PID, 6000, 2000, 5, 0.1, 0.1);
+  Pid_bal.max_err = 30;
+  Pid_spe.max_err = 30;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -108,6 +122,14 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    // if(receive_measure.Switch == 1)
+    // {
+    //   HAL_TIM_Base_Start_IT(&htim6);
+    // }
+    // else
+    // {
+    //   HAL_TIM_Base_Stop_IT(&htim6);
+    // }
   }
   /* USER CODE END 3 */
 }

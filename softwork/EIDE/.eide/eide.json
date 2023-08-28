@@ -1,0 +1,271 @@
+{
+  "name": "BalancingCar",
+  "type": "ARM",
+  "dependenceList": [],
+  "srcDirs": [
+    ".eide/deps"
+  ],
+  "virtualFolder": {
+    "name": "<virtual_root>",
+    "files": [],
+    "folders": [
+      {
+        "name": "::CMSIS",
+        "files": [],
+        "folders": []
+      },
+      {
+        "name": "Application",
+        "files": [],
+        "folders": [
+          {
+            "name": "MDK-ARM",
+            "files": [
+              {
+                "path": "../BalancingCar/MDK-ARM/startup_stm32f427xx.s"
+              }
+            ],
+            "folders": []
+          },
+          {
+            "name": "User",
+            "files": [
+              {
+                "path": "../BalancingCar/Src/can.c"
+              },
+              {
+                "path": "../BalancingCar/Src/dma.c"
+              },
+              {
+                "path": "../BalancingCar/Src/gpio.c"
+              },
+              {
+                "path": "../BalancingCar/Src/main.c"
+              },
+              {
+                "path": "../BalancingCar/Src/spi.c"
+              },
+              {
+                "path": "../BalancingCar/Src/stm32f4xx_hal_msp.c"
+              },
+              {
+                "path": "../BalancingCar/Src/stm32f4xx_it.c"
+              },
+              {
+                "path": "../BalancingCar/Src/tim.c"
+              },
+              {
+                "path": "../BalancingCar/Src/usart.c"
+              }
+            ],
+            "folders": []
+          }
+        ]
+      },
+      {
+        "name": "BlueTooth",
+        "files": [
+          {
+            "path": "../BalancingCar/BlueTooth/BlueTooth.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "bsp",
+        "files": [
+          {
+            "path": "../BalancingCar/bsp/bsp_can.c"
+          },
+          {
+            "path": "../BalancingCar/MPU6500_driver/mpu6500_driver.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "Can-Receive",
+        "files": [
+          {
+            "path": "../BalancingCar/Can-Receive/CAN_receive.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "Drivers",
+        "files": [],
+        "folders": [
+          {
+            "name": "CMSIS",
+            "files": [
+              {
+                "path": "../BalancingCar/Src/system_stm32f4xx.c"
+              }
+            ],
+            "folders": []
+          },
+          {
+            "name": "STM32F4xx_HAL_Driver",
+            "files": [
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c"
+              },
+              {
+                "path": "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c"
+              }
+            ],
+            "folders": []
+          }
+        ]
+      },
+      {
+        "name": "pid",
+        "files": [
+          {
+            "path": "../BalancingCar/pid/pid.c"
+          }
+        ],
+        "folders": []
+      }
+    ]
+  },
+  "outDir": "build",
+  "deviceName": "STM32F427IIHx",
+  "packDir": ".pack/Keil/STM32F4xx_DFP.2.14.0",
+  "miscInfo": {
+    "uid": "1656a22d1390e938d2c125c14b2a790e"
+  },
+  "targets": {
+    "BalancingCar": {
+      "excludeList": [],
+      "toolchain": "AC5",
+      "compileConfig": {
+        "cpuType": "Cortex-M4",
+        "floatingPointHardware": "single",
+        "useCustomScatterFile": false,
+        "scatterFilePath": "<YOUR_SCATTER_FILE>.sct",
+        "storageLayout": {
+          "RAM": [
+            {
+              "tag": "IRAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x20000000",
+                "size": "0x5000"
+              },
+              "isChecked": true,
+              "noInit": false
+            }
+          ],
+          "ROM": [
+            {
+              "tag": "IROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x08000000",
+                "size": "0x10000"
+              },
+              "isChecked": true,
+              "isStartup": true
+            }
+          ]
+        },
+        "options": "null"
+      },
+      "uploader": "OpenOCD",
+      "uploadConfig": {
+        "bin": "",
+        "target": "stm32f4x",
+        "interface": "stlink",
+        "baseAddr": "0x08000000"
+      },
+      "uploadConfigMap": {
+        "JLink": {
+          "bin": "",
+          "baseAddr": "",
+          "cpuInfo": {
+            "vendor": "null",
+            "cpuName": "null"
+          },
+          "proType": 1,
+          "speed": 8000,
+          "otherCmds": ""
+        }
+      },
+      "custom_dep": {
+        "name": "default",
+        "incList": [
+          "../BalancingCar/Inc",
+          "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Inc",
+          "../BalancingCar/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+          "../BalancingCar/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+          "../BalancingCar/Drivers/CMSIS/Include",
+          "../BalancingCar/Can-Receive",
+          ".cmsis/include",
+          "../BalancingCar/MDK-ARM/RTE/_BalancingCar",
+          ".eide/deps",
+          "../BalancingCar/bsp",
+          "../BalancingCar/BlueTooth",
+          "../BalancingCar/MPU6500_driver",
+          "../BalancingCar/pid"
+        ],
+        "libList": [],
+        "sourceDirList": [],
+        "defineList": [
+          "USE_HAL_DRIVER",
+          "STM32F427xx"
+        ]
+      }
+    }
+  },
+  "version": "3.3"
+}

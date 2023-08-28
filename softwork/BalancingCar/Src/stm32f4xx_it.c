@@ -23,6 +23,10 @@
 #include "stm32f4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "BlueTooth.h"
+#include "mpu6500_driver.h"
+#include "CAN_receive.h"
+#include "pid.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -63,7 +67,13 @@ extern DMA_HandleTypeDef hdma_usart6_rx;
 extern DMA_HandleTypeDef hdma_usart6_tx;
 extern UART_HandleTypeDef huart6;
 /* USER CODE BEGIN EV */
-
+extern uint8_t transmit_buffer[31];
+extern uint8_t receive_buffer[56];
+extern float bal_pit ;             //平衡时的pit角
+extern float speed;                //速度
+extern float turn;                //转向速度
+extern pid_t Pid_bal, Pid_spe;
+extern t_receive receive_measure;      //储存接收数据
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -240,7 +250,11 @@ void TIM6_DAC_IRQHandler(void)
   /* USER CODE END TIM6_DAC_IRQn 0 */
   HAL_TIM_IRQHandler(&htim6);
   /* USER CODE BEGIN TIM6_DAC_IRQn 1 */
-
+  mpu_get_data();
+  imu_ahrs_update();
+  imu_attitude_update();
+  Uart_transmit_measure();
+  CAN_cmd_chassis(pid_calc(&Pid_bal, receive_measure.balanc_pit, bal_pit + speed) + turn, pid_calc(&Pid_bal, receive_measure.balanc_pit, bal_pit + speed) - turn);
   /* USER CODE END TIM6_DAC_IRQn 1 */
 }
 
@@ -282,7 +296,13 @@ void USART6_IRQHandler(void)
   /* USER CODE END USART6_IRQn 0 */
   HAL_UART_IRQHandler(&huart6);
   /* USER CODE BEGIN USART6_IRQn 1 */
-
+  if(__HAL_UART_GET_FLAG(&huart6, UART_FLAG_IDLE) == SET)
+  {
+    HAL_UART_DMAStop(&huart6);
+    get_data(receive_buffer);
+    __HAL_UART_CLEAR_FLAG(&huart6, UART_FLAG_IDLE);
+    HAL_UART_Receive_DMA(&huart6, receive_buffer, 56);
+  }
   /* USER CODE END USART6_IRQn 1 */
 }
 
