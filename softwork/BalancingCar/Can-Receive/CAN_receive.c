@@ -37,7 +37,7 @@ extern CAN_HandleTypeDef hcan1;
 */
 motor_measure_t             motor_chassis[2];
 static CAN_TxHeaderTypeDef  chassis_tx_message;
-static uint8_t              chassis_can_send_data[4];
+ uint8_t              chassis_can_send_data[4];
 
 /**
   * @brief          hal CAN fifo call back, receive motor data

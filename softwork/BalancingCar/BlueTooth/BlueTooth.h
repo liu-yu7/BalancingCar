@@ -44,8 +44,8 @@ typedef struct
     float MaxOutPut2;
     float I_limit2;
 
-    float speed;          //前进速度
-    float turn;           //转向速度
+    float speed;          //前进速度(-1~1)
+    float turn;           //转向速度(-1~1)
     uint16_t err;         //记录数据包错误次数
 } t_receive;
 

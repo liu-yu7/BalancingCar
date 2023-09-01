@@ -61,6 +61,13 @@ float pid_calc(pid_t* pid, float get, float set){
     pid->get[NOW] = get;
     pid->set[NOW] = set;
     pid->err[NOW] = set - get;	//set - measure
+
+    //Ò»½×µÍÍ¨ÂË²¨Æ÷
+    if(pid->low_pass_coe)
+    {
+        pid->err[NOW] = pid->err[NOW] * (1 - pid->low_pass_coe) + pid->err[LAST] * pid->low_pass_coe;
+    }
+
     if (pid->max_err != 0 && ABS(pid->err[NOW]) >  pid->max_err  )
 		return 0;
 	if (pid->deadband != 0 && ABS(pid->err[NOW]) < pid->deadband)

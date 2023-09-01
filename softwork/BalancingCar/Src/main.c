@@ -64,7 +64,8 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+uint32_t opt = 0;
+uint16_t a=0;
 /* USER CODE END 0 */
 
 /**
@@ -109,10 +110,10 @@ int main(void)
   init_quaternion();    //初始化四元数
   extern pid_t Pid_bal, Pid_spe;
   extern t_receive receive_measure;      //储存接收数据
-  pid_param_init(&Pid_bal, POSITION_PID, 6000, 2000, 5, 0.1, 0.1);
-  pid_param_init(&Pid_spe, POSITION_PID, 6000, 2000, 5, 0.1, 0.1);
+  pid_param_init(&Pid_bal, POSITION_PID, 6000, 2000, 50, 0, 0.1);
+  pid_param_init(&Pid_spe, POSITION_PID, 10, 5, 0.005, 0.01, 0);
+  Pid_spe.low_pass_coe = 0.7;
   Pid_bal.max_err = 30;
-  Pid_spe.max_err = 30;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -122,14 +123,20 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    // if(receive_measure.Switch == 1)
-    // {
-    //   HAL_TIM_Base_Start_IT(&htim6);
-    // }
-    // else
-    // {
-    //   HAL_TIM_Base_Stop_IT(&htim6);
-    // }
+		//CAN_cmd_chassis(opt , opt);
+    mpu_get_data();
+    imu_ahrs_update();
+    imu_attitude_update();
+    if(receive_measure.Switch == 1)
+    {
+			opt++;
+      HAL_TIM_Base_Start_IT(&htim6);
+    }
+    else
+    {
+			a++;
+      HAL_TIM_Base_Stop_IT(&htim6);
+    }
   }
   /* USER CODE END 3 */
 }

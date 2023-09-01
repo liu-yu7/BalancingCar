@@ -69,11 +69,13 @@ extern UART_HandleTypeDef huart6;
 /* USER CODE BEGIN EV */
 extern uint8_t transmit_buffer[31];
 extern uint8_t receive_buffer[56];
-extern float bal_pit ;             //平衡时的pit角
+extern float bal_pit ;             //平衡时的pit�?
 extern float speed;                //速度
 extern float turn;                //转向速度
 extern pid_t Pid_bal, Pid_spe;
 extern t_receive receive_measure;      //储存接收数据
+extern imu_t                 imu;			//IMU????
+float output;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -254,7 +256,8 @@ void TIM6_DAC_IRQHandler(void)
   imu_ahrs_update();
   imu_attitude_update();
   Uart_transmit_measure();
-  CAN_cmd_chassis(pid_calc(&Pid_bal, receive_measure.balanc_pit, bal_pit + speed) + turn, pid_calc(&Pid_bal, receive_measure.balanc_pit, bal_pit + speed) - turn);
+	output = pid_calc(&Pid_bal, imu.pit, bal_pit + pid_calc(&Pid_spe, motor_chassis[0].speed_rpm + motor_chassis[1].speed_rpm, speed));
+  CAN_cmd_chassis(output + turn, output + turn);
   /* USER CODE END TIM6_DAC_IRQn 1 */
 }
 

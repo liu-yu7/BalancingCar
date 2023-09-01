@@ -101,6 +101,6 @@ void get_data(uint8_t *data)
   bal_pit = receive_measure.balanc_pit;
   pid_param_init(&Pid_bal, POSITION_PID, receive_measure.MaxOutPut1, receive_measure.I_limit1, receive_measure.kp1, receive_measure.ki1, receive_measure.kd1);
   pid_param_init(&Pid_spe, POSITION_PID, receive_measure.MaxOutPut2, receive_measure.I_limit2, receive_measure.kp2, receive_measure.ki2, receive_measure.kd2);
-  speed = receive_measure.speed;
-  turn = receive_measure.turn;
+  speed = 3000 * receive_measure.speed;
+  turn = 2500 * receive_measure.turn;
 }

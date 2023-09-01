@@ -20,6 +20,8 @@ typedef struct __pid_t
     float get[3]; //测量值
     float err[3]; //误差
 
+    float low_pass_coe;     //低通滤波系数
+
     float pout; //p输出
     float iout; //i输出
     float dout; //d输出
@@ -69,19 +71,19 @@ void pid_reset(pid_t	*pid, float kp, float ki, float kd);
 
 float pid_calc(pid_t *pid, float fdb, float ref);
 
-extern pid_t pid_rol;
-extern pid_t pid_pit;
-extern pid_t pid_yaw;
-extern pid_t pid_pit_omg;
-extern pid_t pid_yaw_omg;
-extern pid_t pid_spd[4];
-extern pid_t pid_yaw_alfa;
-extern pid_t pid_chassis_angle;
-extern pid_t pid_poke;
-extern pid_t pid_poke_omg;
-extern pid_t pid_imu_tmp;  //imu_temperature
-extern pid_t pid_cali_bby; //big buff yaw
-extern pid_t pid_cali_bbp;
-extern pid_t pid_omg;
-extern pid_t pid_pos;
+// extern pid_t pid_rol;
+// extern pid_t pid_pit;
+// extern pid_t pid_yaw;
+// extern pid_t pid_pit_omg;
+// extern pid_t pid_yaw_omg;
+// extern pid_t pid_spd[4];
+// extern pid_t pid_yaw_alfa;
+// extern pid_t pid_chassis_angle;
+// extern pid_t pid_poke;
+// extern pid_t pid_poke_omg;
+// extern pid_t pid_imu_tmp;  //imu_temperature
+// extern pid_t pid_cali_bby; //big buff yaw
+// extern pid_t pid_cali_bbp;
+// extern pid_t pid_omg;
+// extern pid_t pid_pos;
 #endif
